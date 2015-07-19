@@ -13,8 +13,8 @@ For one robot:
 In order to build more than one robot, the channel on the xBee radio will have to be changed. A link to a project discussing how to do robot specific communication with the xBee module can be found [here](http://www.instructables.com/id/Processing-Controls-RC-Car-with-XBee-modules/step9/Install-CoolTerm-for-MacOS/) 
 
 NOTE: All of the code written here is specific to the hardware of the project. In all likelihood the following will have to be edited:
-Amount of voltage subtracted from input
-Ports for which input is recieved
-Speed of the robot
+- Amount of voltage subtracted from input
+- Ports for which input is recieved
+- Speed of the robot
 
 
