@@ -6,6 +6,8 @@ Adafruit_MotorShield AFMS = Adafruit_MotorShield();
 Adafruit_DCMotor *motorLeft = AFMS.getMotor(1);
 Adafruit_DCMotor *motorRight = AFMS.getMotor(2);
 int dir = 0;
+int lastDir = 0;
+boolean firstTime = true;
 
 void setup() {
 Serial.begin(9600);//Remember that the baud must be the same on both arduinos
@@ -15,12 +17,21 @@ motorRight->setSpeed(200);
 }
 void loop() {
   while(Serial.available() > 0) {
+    if(firstTime){
+      lastDir = Serial.parseInt();
+      firstTime = false;
+      if(lastDir >= 0 && lastDir <= 4)
+        setDirection(lastDir);
+      else
+        setDirection(0); 
+    }
+    //Serial.println("You've reached me!");
     dir = Serial.parseInt();
-    if(dir >= 0 && dir <= 4)
-      setDirection(dir);
-    else
-      setDirection(0); 
-  }
+    if(dir != lastDir){
+      lastDir = dir;
+      resetMotors(lastDir);
+    }
+}
 }
 
 void setDirection(int recieved){
@@ -45,6 +56,14 @@ void setDirection(int recieved){
   else{
     motorLeft->run(RELEASE);
     motorRight->run(RELEASE);
-  }
+  } 
 }
-
+ void resetMotors(int recieved){
+    motorLeft->run(RELEASE);
+    motorRight->run(RELEASE);
+    delay(100);
+    if(dir >= 0 && dir <= 4)
+      setDirection(recieved);
+    else
+      setDirection(recieved); 
+ }
