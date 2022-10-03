@@ -17,4 +17,4 @@ Code is not generalized. If expansion to other hardware or more complex control 
 - Ports for which input is recieved
 - Speed of the robot
 
-If there are issues with controller burn out, consider a higher power motor shield such as the Pololu Dual MC33926 Motor Driver Shield or Pololu Dual VNH5019 Motor Driver Shield. Small code reworks may be needed for library differences.
+If there are issues with controller burn out, consider a higher power motor shield such as the Dual TB9051FTG Motor Driver Shield. Small code reworks may be needed for library differences.
